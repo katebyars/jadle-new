@@ -1,7 +1,5 @@
 package models;
 
-import enums.DiningStyle;
-
 
 public class Restaurant {
 
@@ -13,9 +11,9 @@ public class Restaurant {
     private String email;
     private String image;
     private int id;
-    private DiningStyle diningStyle;
 
-    public Restaurant(String name, String address, String zipcode, String phone, DiningStyle diningStyle) {
+
+    public Restaurant(String name, String address, String zipcode, String phone) {
         this.name = name;
         this.address = address;
         this.zipcode = zipcode;
@@ -23,11 +21,10 @@ public class Restaurant {
         this.website = "no website listed";
         this.email = "no email available";
         this.image = "/resources/images/uploads/no_image.jpg";
-        this.diningStyle = diningStyle;
 
     }
 
-    public Restaurant(String name, String address, String zipcode, String phone, String website, String email, String image,  DiningStyle diningStyle) {
+    public Restaurant(String name, String address, String zipcode, String phone, String website, String email, String image) {
         this.name = name;
         this.address = address;
         this.zipcode = zipcode;
@@ -35,7 +32,6 @@ public class Restaurant {
         this.website = website;
         this.email = email;
         this.image = image;
-        this.diningStyle = diningStyle;
     }
 
     //getters and setters
@@ -103,14 +99,6 @@ public class Restaurant {
         this.id = id;
     }
 
-    public DiningStyle getDiningStyle() {
-        return diningStyle;
-    }
-
-    public void setDiningStyle(DiningStyle diningStyle) {
-        this.diningStyle = diningStyle;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -125,8 +113,7 @@ public class Restaurant {
         if (!phone.equals(that.phone)) return false;
         if (!website.equals(that.website)) return false;
         if (!email.equals(that.email)) return false;
-        if (!image.equals(that.image)) return false;
-        return diningStyle.equals(that.diningStyle);
+        return image.equals(that.image);
     }
 
     @Override
@@ -139,7 +126,6 @@ public class Restaurant {
         result = 31 * result + email.hashCode();
         result = 31 * result + image.hashCode();
         result = 31 * result + id;
-        result = 31 * result + diningStyle.hashCode();
         return result;
     }
 }
