@@ -1,5 +1,6 @@
 package models;
 
+import enums.DiningStyle;
 
 public class Restaurant {
 
@@ -11,9 +12,10 @@ public class Restaurant {
     private String email;
     private String image;
     private int id;
+    private DiningStyle diningStyle;
 
 
-    public Restaurant(String name, String address, String zipcode, String phone) {
+    public Restaurant(String name, String address, String zipcode, String phone, DiningStyle diningStyle) {
         this.name = name;
         this.address = address;
         this.zipcode = zipcode;
@@ -21,10 +23,11 @@ public class Restaurant {
         this.website = "no website listed";
         this.email = "no email available";
         this.image = "/resources/images/uploads/no_image.jpg";
+        this.diningStyle = diningStyle;
 
     }
 
-    public Restaurant(String name, String address, String zipcode, String phone, String website, String email, String image) {
+    public Restaurant(String name, String address, String zipcode, String phone, String website, String email, String image, DiningStyle diningStyle) {
         this.name = name;
         this.address = address;
         this.zipcode = zipcode;
@@ -32,6 +35,33 @@ public class Restaurant {
         this.website = website;
         this.email = email;
         this.image = image;
+        this.diningStyle = diningStyle;
+    }
+
+    public String getDiningStyle(){
+        String message;
+        switch (this.diningStyle){
+            case CASUAL:
+                message =  String.format("%s likes to keep things pretty casual. No stuffy suits here!", this.getName());
+                break;
+
+            case FASTFOOD:
+                message = String.format("%s is a fast food restaurant. Don't expect ambiance.", this.getName());
+                break;
+
+            case FOODCART:
+                message =  String.format("%s is part of the Portland Foodcart scene. Bring an umbrella if its raining!", this.getName());
+                break;
+
+            case FINEDINING:
+                message =  String.format("Get ready to spend some coin at %s. Don't arrive underdressed - it's posh.", this.getName());
+                break;
+
+            default:
+                message =  ("Something went wrong. Please try again.");
+                break;
+        }
+        return message;
     }
 
     //getters and setters
@@ -111,9 +141,9 @@ public class Restaurant {
         if (!address.equals(that.address)) return false;
         if (!zipcode.equals(that.zipcode)) return false;
         if (!phone.equals(that.phone)) return false;
-        if (!website.equals(that.website)) return false;
-        if (!email.equals(that.email)) return false;
-        return image.equals(that.image);
+        if (website != null ? !website.equals(that.website) : that.website != null) return false;
+        if (email != null ? !email.equals(that.email) : that.email != null) return false;
+        return image != null ? image.equals(that.image) : that.image == null;
     }
 
     @Override
