@@ -1,5 +1,7 @@
 package models;
 
+import enums.DiningStyle;
+
 
 public class Restaurant {
 
@@ -107,5 +109,37 @@ public class Restaurant {
 
     public void setDiningStyle(DiningStyle diningStyle) {
         this.diningStyle = diningStyle;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Restaurant that = (Restaurant) o;
+
+        if (id != that.id) return false;
+        if (!name.equals(that.name)) return false;
+        if (!address.equals(that.address)) return false;
+        if (!zipcode.equals(that.zipcode)) return false;
+        if (!phone.equals(that.phone)) return false;
+        if (!website.equals(that.website)) return false;
+        if (!email.equals(that.email)) return false;
+        if (!image.equals(that.image)) return false;
+        return diningStyle.equals(that.diningStyle);
+    }
+
+    @Override
+    public int hashCode() {
+        int result = name.hashCode();
+        result = 31 * result + address.hashCode();
+        result = 31 * result + zipcode.hashCode();
+        result = 31 * result + phone.hashCode();
+        result = 31 * result + website.hashCode();
+        result = 31 * result + email.hashCode();
+        result = 31 * result + image.hashCode();
+        result = 31 * result + id;
+        result = 31 * result + diningStyle.hashCode();
+        return result;
     }
 }
