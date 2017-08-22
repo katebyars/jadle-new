@@ -16,7 +16,7 @@ public interface ReviewDao {
     List<Review> getAllReviewsByRestaurant(int restaurantId);
 
     //update
-    void update(String writtenBy, int rating, int restaurantId, int id);
+    void update(String writtenBy, int rating, int restaurantId, int id, String content);
 
     //delete
     void deleteById(int id);
