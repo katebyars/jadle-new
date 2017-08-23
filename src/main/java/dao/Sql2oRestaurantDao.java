@@ -60,6 +60,7 @@ public class Sql2oRestaurantDao implements RestaurantDao{
                     .addParameter("website", website)
                     .addParameter("email", email)
                     .addParameter("image", image)
+                    .addParameter("id", id)
                     .executeUpdate();
         } catch (Sql2oException ex){
             System.out.println(ex);
