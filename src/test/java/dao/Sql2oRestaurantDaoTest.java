@@ -1,6 +1,5 @@
 package dao;
 
-import enums.DiningStyle;
 import models.Foodtype;
 import models.Restaurant;
 //import models.Review;
@@ -106,10 +105,10 @@ public class Sql2oRestaurantDaoTest {
     //helpers
 
     public Restaurant setupRestaurant (){
-        return new Restaurant("Fish Witch", "214 NE Broadway", "97232", "503-402-9874", "http://fishwitch.com", "hellofishy@fishwitch.com", "fishwitch.jpg", DiningStyle.CASUAL );
+        return new Restaurant("Fish Witch", "214 NE Broadway", "97232", "503-402-9874", "http://fishwitch.com", "hellofishy@fishwitch.com", "fishwitch.jpg");
     }
 
     public Restaurant setupAltRestaurant (){
-        return new Restaurant("Fish Witch", "214 NE Broadway", "97232", "503-402-9874", DiningStyle.CASUAL);
+        return new Restaurant("Fish Witch", "214 NE Broadway", "97232", "503-402-9874");
     }
 }
